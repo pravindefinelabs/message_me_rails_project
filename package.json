@@ -1,5 +1,8 @@
 {
   "name": "message_me",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "semantic-ui-css": "^2.5.0"
+  }
 }
