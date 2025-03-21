@@ -24,3 +24,8 @@ $(document).on("turbolinks:load", function () {
     $('.ui.dropdown').dropdown(); // Initialize dropdown every time Turbolinks loads a new page
 });
 
+$(document).on('turbolinks:load', function () {
+    $('.message .close').on('click', function () {
+        $(this).closest('.message').fadeOut();
+    });
+});
