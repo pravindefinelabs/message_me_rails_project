@@ -18,7 +18,9 @@
 //= require semantic-ui/modal
 //= require semantic-ui/dropdown
 //= require_tree .
-$(document).ready(function () {
-    $('.ui.dropdown').dropdown();  // Add parentheses to execute function
+
+
+$(document).on("turbolinks:load", function () {
+    $('.ui.dropdown').dropdown(); // Initialize dropdown every time Turbolinks loads a new page
 });
 
