@@ -3,6 +3,7 @@ class ChatroomController < ApplicationController
 
   def index
     @message = Message.new
-    @messages = Message.all
+    # @messages = Message.all
+    @messages = Message.order(created_at: :desc).limit(30).reverse
   end
 end
