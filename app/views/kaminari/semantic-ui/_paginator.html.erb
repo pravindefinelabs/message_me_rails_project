@@ -1,0 +1,11 @@
+<% if paginator.total_pages > 1 %>
+  <div class="ui pagination menu">
+    <% paginator.each_page do |page| %>
+      <% if page.current? %>
+        <a class="item active" href="#"><%= page.number %></a>
+      <% else %>
+        <%= link_to page.number, url_for(params.merge(page: page.number)), class: "item" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

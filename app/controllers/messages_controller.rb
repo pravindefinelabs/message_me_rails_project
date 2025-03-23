@@ -1,6 +1,10 @@
 class MessagesController < ApplicationController
   before_action :require_user
 
+  def new
+    @messages = Message.order(created_at: :desc).page(params[:page]).per(15)
+  end
+
   def create
     message = current_user.messages.build(message_params)
     if message.save

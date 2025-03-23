@@ -1,0 +1,34 @@
+<div class="ui segment">
+  <% @users.each do |user| %>
+    <div class="event friends">
+      <div class="content">
+        <div class="summary">
+          <em> Name:&nbsp<%= user.username %></em>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <% if @users.total_pages > 1 %>
+    <div class="ui pagination menu">
+      <% if @users.prev_page %>
+        <%= link_to '«', url_for(page: @users.prev_page), class: 'item' %>
+      <% else %>
+        <div class="disabled item">«</div>
+      <% end %>
+      <% [@users.current_page, @users.current_page + 1].each do |page| %>
+        <% if page <= @users.total_pages %>
+          <% if page == @users.current_page %>
+            <a class="item active"><%= page %></a>
+          <% else %>
+            <%= link_to page, url_for(page: page), class: 'item' %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if @users.next_page %>
+        <%= link_to '»', url_for(page: @users.next_page), class: 'item' %>
+      <% else %>
+        <div class="disabled item">»</div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

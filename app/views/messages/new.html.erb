@@ -1,0 +1,31 @@
+<div class="ui segment">
+  <% if @messages.current_page ==1 %>
+    <h3><em>Last message</em></h3>
+  <%end%>
+  <div class="ui feed"id ="message-container">
+    <%= render @messages %>
+  </div>
+  <% if @messages.total_pages > 1 %>
+    <div class="ui pagination menu">
+      <% if @messages.prev_page %>
+        <%= link_to '«', url_for(page: @messages.prev_page), class: 'item' %>
+      <% else %>
+        <div class="disabled item">«</div>
+      <% end %>
+      <% [@messages.current_page, @messages.current_page + 1].each do |page| %>
+        <% if page <= @messages.total_pages %>
+          <% if page == @messages.current_page %>
+            <a class="item active"><%= page %></a>
+          <% else %>
+            <%= link_to page, url_for(page: page), class: 'item' %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if @messages.next_page %>
+        <%= link_to '»', url_for(page: @messages.next_page), class: 'item' %>
+      <% else %>
+        <div class="disabled item">»</div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
